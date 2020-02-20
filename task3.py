@@ -44,4 +44,73 @@ def sorted_words(b):
 	print(l)
 	return l
 
-sorted_words("Book1.txt")
+#sorted_words("Book1.txt")
+
+def character_word_count(b):
+	with open(b,"r") as f:
+		ft = f.read()
+		
+	nt = re.findall("[a-zA-Z-]+",ft)
+	
+	d = {}
+	for i in nt:
+		d[i] = d.get(i,0) + 1
+	print(d)
+	return d
+	
+#character_word_count("Book1.txt")
+
+def starts_with_vow(b):
+	with open(b,"r") as f:
+		ft = f.read()
+		
+	nt = re.findall("[a-zA-Z-]+",ft)
+	l = ("a","e","i","o","u")
+	a = 0
+	for i in nt:
+		if i[0] in l:
+			a += 1
+	print(a)
+	return a
+	
+#starts_with_vow("Book1.txt")
+
+def rare_words(b):
+	with open(b,"r") as f:
+		ft = f.read()
+		
+	nt = re.findall("[a-zA-Z-]+",ft)
+	
+	with open("20k.txt","r") as fg:
+		fgt = fg.read()
+		
+	lt = re.findall("[a-zA-Z-]+",fgt)
+	
+	l = set(nt).difference(set(lt))
+	l = list(l)
+	
+	print(l)
+	return l
+
+#rare_words("Book1.txt")	
+
+def unused_word(b):
+	with open(b,"r") as f:
+		ft = f.read()
+		
+	nt = re.findall("[a-zA-Z-]+",ft)
+	
+	with open("20k.txt","r") as fg:
+		fgt = fg.read()
+		
+	lt = re.findall("[a-zA-Z-]+",fgt)
+	
+	l = set(lt).difference(set(nt))
+	l = list(l)
+	
+	print(l)
+	return l
+
+unused_word("Book1.txt")	
+
+	
