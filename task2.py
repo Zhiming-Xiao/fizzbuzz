@@ -1,22 +1,32 @@
 from os import path
+import os
+import re
 
 def sub_task():
 	f_input = input("input the filename>>")
 	d_input = input("input the specific folder(option)(if no please enter q)>>")
 	c_input = input("input the page>>")
 	
-	if path.exists(f_input):
-		if not os.path.isfile(f_input):
-			print("this is not a file")
-	else:
-		print("it is not exist!")
-		
 	if path.exists(d_input) and d_input != "q":
 		if not os.path.isdir(d_input):
-			print("this is not a dir")
+			print(f"{d_input} is not a dir")
+		else:
+			f_input = path.join(d_input,f_input)
+	elif d_input == "q":
+		pass
 	else:
-		print("it is not exist!")
+		print(f"{d_input} is not exist!")
+		return 
+	
+	if path.exists(f_input):
+		if not os.path.isfile(f_input):
+			print(f"{f_input} is not a file")
+			return
+	else:
+		print(f"{f_input} is not exist!")
 		
+	
+	
 	if c_input.isdigit():
 		cj = int(c_input)
 		cp = cj * 25
@@ -31,11 +41,15 @@ def sub_task():
 		with open("Newfile.txt","r") as fg:
 			fgt = fg.read()
 		c_w = len(fgt.split())
+		c_c = len(re.findall("[a-zA-Z]",fgt))
+		c_n = len(re.findall("[0-9]",fgt))
 		
 		print("success!")
-		print(cj)
-		print(cp)
-		print(c_w)
+		print(f"{cj} pages")
+		print(f"{cp} lines")
+		print(f"{c_w} words")
+		print(f"{c_c} alphabetic characters")
+		print(f"{c_n} numeric characters")
 		
 			
 	else:
@@ -53,13 +67,14 @@ def l33t(text):
 			ntexts.append(nitem)
 		else:
 			ntexts.append(item)
-	ntext = "".join(ntexts)
+	ntext = " ".join(ntexts)
 
 	ntext = ntext.replace("o","0").replace("O","0")
 	ntext = ntext.replace("a","4").replace("A","4")
 	ntext = ntext.replace("e","3").replace("E","3")
 	ntext = ntext.replace("i","1").replace("I","1")
 	
+
 	return(ntext)
 	
 sub_task()
