@@ -33,10 +33,10 @@ def sub_task():
 		with open(f_input,"r") as fr:
 			fs = fr.readlines()
 		fs = fs[:cp]
-		fw = open("Newfile.txt","at")
+		fw = open("Newfile.txt","w")
 		for j in fs:
 			n_t = l33t(j)
-			fw.write(n_t)
+			fw.write(n_t+"\n")
 		fw.close()
 		with open("Newfile.txt","r") as fg:
 			fgt = fg.read()
