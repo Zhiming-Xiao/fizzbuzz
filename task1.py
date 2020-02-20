@@ -43,4 +43,16 @@ def sub_task3():
 	print(f"There are {count_act} currently Active")
 	print(f'There are {count_wb} both "Walking" and have "Biking"')
 	
-sub_task3()
+#sub_task3()
+
+def sub_task4():
+	df = pd.read_csv("Trails.csv")
+	l= []
+	for i,r in df.iterrows():
+		if r["HIKING"] == "Yes" and r["BIKING"] == "Yes":
+			#Trail Name, General Condition, Lighting, Status, Hiking, Biking, ATV
+			l.append((r["TRAIL_NAME"],r["CONDITION"],r["LIGHT"],r["STATUS"],r["HIKING"],r["BIKING"],r["ATV"]))
+	
+	print(l)
+		
+#sub_task4()	
